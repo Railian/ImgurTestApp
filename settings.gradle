@@ -1,0 +1,1 @@
+include ':domain', ':business-logic', ':platform', ':presentation', ':dependency-resolver', ':app'
