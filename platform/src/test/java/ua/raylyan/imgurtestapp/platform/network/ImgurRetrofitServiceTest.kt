@@ -1,6 +1,7 @@
 package ua.raylyan.imgurtestapp.platform.network
 
 import org.junit.Test
+import ua.raylyan.imgurtestapp.platform.network.entity.ImgurJsonResponse
 import ua.raylyan.imgurtestapp.platform.network.service.ImgurRetrofitService
 
 class ImgurRetrofitServiceTest {

@@ -4,7 +4,7 @@ import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
-import ua.raylyan.imgurtestapp.platform.network.ImgurJsonResponse
+import ua.raylyan.imgurtestapp.platform.network.entity.ImgurJsonResponse
 import ua.raylyan.imgurtestapp.platform.network.entity.ImgurJsonComment
 import ua.raylyan.imgurtestapp.platform.network.entity.ImgurJsonGalleryItem
 

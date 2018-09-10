@@ -1,4 +1,4 @@
-package ua.raylyan.imgurtestapp.platform.network
+package ua.raylyan.imgurtestapp.platform.network.entity
 
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
@@ -13,7 +13,7 @@ internal sealed class ImgurJsonResponse<T> {
 
     internal data class Error<T>(
             @SerializedName("status") val status: Int,
-            @SerializedName("data") val details: Details
+            @SerializedName("data") val errorDetails: Details
     ) : ImgurJsonResponse<T>() {
 
         internal data class Details(
