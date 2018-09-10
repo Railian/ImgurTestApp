@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ua.raylyan.imgurtestapp.domain.entity.Image
 import ua.raylyan.imgurtestapp.presentation.R
+import ua.raylyan.imgurtestapp.presentation.util.onClicked
 import kotlin.properties.Delegates
 
 class ImageAdapter : RecyclerView.Adapter<ImageViewHolder>() {
@@ -13,6 +14,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageViewHolder>() {
             initialValue = emptyList(),
             onChange = { _, _, _ -> notifyDataSetChanged() }
     )
+
+    private var onImageClickedAction: (item: Image) -> Unit = {}
 
     override fun getItemCount(): Int = images.count()
 
@@ -23,10 +26,12 @@ class ImageAdapter : RecyclerView.Adapter<ImageViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
-        holder.bind(images[position])
+        val image = images[position]
+        holder.bind(image)
+        holder.itemView.onClicked { onImageClickedAction.invoke(image) }
     }
 
-    fun onItemClick(action: () -> Unit) {
-
+    fun onImageClicked(action: (item: Image) -> Unit) {
+        onImageClickedAction = action
     }
 }

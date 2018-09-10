@@ -15,6 +15,12 @@ class ImageCacheDataSourceImpl @Inject constructor() : ImageCacheDataSource {
         return cachedImages
     }
 
+    override fun observeImage(imageId: String): Observable<Image> {
+        return cachedImages
+                .filter { it.find { image -> image.id == imageId } != null }
+                .map { it.find { image -> image.id == imageId } }
+    }
+
     override fun addImages(images: List<Image>): Completable {
         return Completable.fromCallable {
             val alreadyCachedImages = cachedImages.value ?: emptyList()

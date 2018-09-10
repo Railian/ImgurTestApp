@@ -22,6 +22,10 @@ class ImageRepositoryImpl @Inject constructor(
         return cache.observeImages()
     }
 
+    override fun observeImage(imageId: String): Observable<Image> {
+        return cache.observeImage(imageId)
+    }
+
     override fun searchInGallery(query: String): Completable {
         return network.searchImagesInGallery(query)
                 .flatMapCompletable {

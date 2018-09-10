@@ -5,6 +5,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_gallery.*
 import ua.raylyan.imgurtestapp.presentation.R
 import ua.raylyan.imgurtestapp.presentation.scene.BaseActivity
+import ua.raylyan.imgurtestapp.presentation.scene.details.DetailsActivity
 import ua.raylyan.imgurtestapp.presentation.util.observe
 import ua.raylyan.imgurtestapp.presentation.util.onTextChanged
 
@@ -21,6 +22,6 @@ class GalleryActivity : BaseActivity() {
         observe(viewModel.errors) { Toast.makeText(this, it.message, Toast.LENGTH_LONG).show() }
         editTextSearch.onTextChanged { viewModel.updateQuery(it.toString()) }
         recyclerView.adapter = adapter
-        adapter.onItemClick { }
+        adapter.onImageClicked { startActivity(DetailsActivity.getIntent(this, it.id)) }
     }
 }

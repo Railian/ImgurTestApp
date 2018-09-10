@@ -8,6 +8,7 @@ import ua.raylyan.imgurtestapp.domain.entity.Image
 
 interface ImageRepository {
     fun observeSearchResult(): Observable<List<Image>>
+    fun observeImage(imageId: String): Observable<Image>
     fun searchInGallery(query: String): Completable
     fun loadNextPage(): Completable
     fun loadComments(imageId: String): Single<List<Comment>>
