@@ -22,12 +22,20 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    api project (":domain")
-    implementation project (":business-logic")
-    implementation project (":platform")
-    implementation project (":presentation")
+    api project(":domain")
+    implementation project(":business-logic")
+    implementation project(":platform")
+    implementation project(":presentation")
+
+    implementation "com.google.dagger:dagger:2.16"
+    kapt "com.google.dagger:dagger-compiler:2.16"
+
+    implementation 'com.google.dagger:dagger-android:2.16'
+    implementation 'com.google.dagger:dagger-android-support:2.16'
+    kapt 'com.google.dagger:dagger-android-processor:2.16'
 
     implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'

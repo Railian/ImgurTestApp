@@ -25,6 +25,12 @@ dependencies {
 
     api project(":domain")
 
+    implementation 'javax.inject:javax.inject:1'
+
+    implementation 'com.google.dagger:dagger-android:2.16'
+    implementation 'com.google.dagger:dagger-android-support:2.16'
+    kapt 'com.google.dagger:dagger-android-processor:2.16'
+
     implementation 'androidx.core:core-ktx:1.0.0-rc02'
     implementation 'androidx.appcompat:appcompat:1.0.0-rc02'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'

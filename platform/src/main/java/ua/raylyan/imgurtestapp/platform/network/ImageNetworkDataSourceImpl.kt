@@ -6,8 +6,9 @@ import ua.raylyan.imgurtestapp.domain.entity.Comment
 import ua.raylyan.imgurtestapp.domain.entity.Image
 import ua.raylyan.imgurtestapp.domain.util.tryOrNull
 import ua.raylyan.imgurtestapp.platform.network.service.ImgurRetrofitService
+import javax.inject.Inject
 
-class ImageNetworkDataSoureImpl : ImageNetworkDataSource {
+class ImageNetworkDataSourceImpl @Inject constructor() : ImageNetworkDataSource {
 
     private val service = RetrofitFactory.imgurRetrofit.create(ImgurRetrofitService::class.java)
 

@@ -8,8 +8,9 @@ import ua.raylyan.imgurtestapp.domain.contract.datasource.ImageNetworkDataSource
 import ua.raylyan.imgurtestapp.domain.contract.repository.ImageRepository
 import ua.raylyan.imgurtestapp.domain.entity.Comment
 import ua.raylyan.imgurtestapp.domain.entity.Image
+import javax.inject.Inject
 
-class ImageRepositoryImpl(
+class ImageRepositoryImpl @Inject constructor(
         private val network: ImageNetworkDataSource,
         private val cache: ImageCacheDataSource
 ) : ImageRepository {
