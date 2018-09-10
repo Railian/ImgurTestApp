@@ -24,7 +24,9 @@ class ImageRepositoryImpl @Inject constructor(
 
     override fun searchInGallery(query: String): Completable {
         return network.searchImagesInGallery(query)
-                .flatMapCompletable { cache.removeAllImages().andThen(cache.addImages(it)) }
+                .flatMapCompletable {
+                    cache.removeAllImages().andThen(cache.addImages(it))
+                }
                 .doOnComplete {
                     lastQuery = query
                     loadedPages = 1

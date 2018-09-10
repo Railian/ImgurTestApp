@@ -1,2 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ua.raylyan.imgurtestapp.platform" />
+    package="ua.raylyan.imgurtestapp.platform">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

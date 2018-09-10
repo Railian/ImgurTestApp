@@ -2,12 +2,16 @@
     package="ua.raylyan.imgurtestapp.presentation">
 
     <application>
-        <activity android:name="ua.raylyan.imgurtestapp.presentation.MainActivity">
+
+        <activity android:name=".scene.gallery.GalleryActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".scene.details.DetailsActivity" />
+
     </application>
 
 </manifest>
