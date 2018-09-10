@@ -1,5 +1,6 @@
 package ua.raylyan.imgurtestapp.presentation.scene.gallery
 
+import android.os.Handler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
@@ -19,6 +20,9 @@ class GalleryViewModel @Inject constructor(
 
     private val loadingDisposable by disposable()
 
+    private val handler = Handler()
+    private var runnable: Runnable? = null
+
     init {
         repository.observeSearchResult()
                 .subscribeOn(Schedulers.io())
@@ -30,8 +34,14 @@ class GalleryViewModel @Inject constructor(
                 .autoDispose()
     }
 
-    fun searchImage(query: String) {
-        loadingDisposable.dispose()
+    fun updateQuery(query: String) {
+        runnable?.let(handler::removeCallbacks)
+        runnable = searchImage(query)
+        handler.postDelayed(runnable, 2_000)
+    }
+
+    private fun searchImage(query: String) = Runnable {
+        loadingDisposable.clear()
         repository.searchInGallery(query)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,7 +53,7 @@ class GalleryViewModel @Inject constructor(
     }
 
     fun loadNextPage() {
-        loadingDisposable.dispose()
+        loadingDisposable.clear()
         repository.loadNextPage()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

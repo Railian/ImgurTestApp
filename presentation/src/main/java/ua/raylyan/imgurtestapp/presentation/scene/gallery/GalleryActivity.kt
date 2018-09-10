@@ -19,7 +19,8 @@ class GalleryActivity : BaseActivity() {
 
         observe(viewModel.searchResult) { adapter.images = it }
         observe(viewModel.errors) { Toast.makeText(this, it.message, Toast.LENGTH_LONG).show() }
-        editTextSearch.onTextChanged { viewModel.searchImage(it.toString()) }
+        editTextSearch.onTextChanged { viewModel.updateQuery(it.toString()) }
         recyclerView.adapter = adapter
+        adapter.onItemClick { }
     }
 }

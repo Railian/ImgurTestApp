@@ -25,4 +25,8 @@ class ImageAdapter : RecyclerView.Adapter<ImageViewHolder>() {
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
         holder.bind(images[position])
     }
+
+    fun onItemClick(action: () -> Unit) {
+
+    }
 }

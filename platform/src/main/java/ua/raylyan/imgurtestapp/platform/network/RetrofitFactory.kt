@@ -2,6 +2,7 @@ package ua.raylyan.imgurtestapp.platform.network
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,8 +18,13 @@ internal object RetrofitFactory {
                 .let(it::proceed)
     }
 
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
     private val imgurClient = OkHttpClient.Builder()
             .addInterceptor(imgurAuthInterceptor)
+            .addInterceptor(loggingInterceptor)
             .build()
 
     internal val imgurRetrofit = Retrofit.Builder()

@@ -9,7 +9,12 @@ import ua.raylyan.imgurtestapp.domain.entity.Image
 class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(image: Image) {
-        Picasso.get().cancelRequest(itemView.imageView)
-        Picasso.get().load(image.link).into(itemView.imageView)
+        with(Picasso.get()) {
+            cancelRequest(itemView.imageView)
+            load(image.link)
+                    .resize(300, 0)
+                    .placeholder(android.R.color.transparent)
+                    .into(itemView.imageView)
+        }
     }
 }
